@@ -24,6 +24,10 @@ PHONE_NUMBER = os.environ["PHONE_NUMBER"]
 ID_NO = os.environ["ID_NO"]
 KU = os.environ["KU"]
 
+# 行程卡信息
+scope = '162043657002556'
+filetoken = scope+'1'
+
 # 登录url
 base_addr = 'http://ehall.seu.edu.cn/'
 login = "https://newids.seu.edu.cn/authserver/login?service=http%3A%2F%2Fehall.seu.edu.cn%2Fqljfwapp3%2Fsys%2FlwWiseduElectronicPass%2Findex.do%3Ft_s%3D1620696987722%26amp_sec_version_%3D1%26gid_%3Dc0s4TVVNdUQ5UXplVVZFa3VMT3RlMW0yeHpMN2tCa0VhbEZjSlpIMHNaVkdBckYvd2VlWGorWFhDNzhRSWdnV1g4bEN0cVp5S1dzaDVrOGoraWRlM1E9PQ%26EMAP_LANG%3Dzh%26THEME%3Dindigo%23%2Fapplication"
@@ -52,12 +56,8 @@ pass_campus = base_addr + 'qljfwapp3/code/038e533b-1c26-4572-9320-b8f2efa3f2d1.d
 SQLY = base_addr + 'qljfwapp3/code/2d7772bc-4fb3-4e2c-a224-6df948cce897/SQLY.do'
 uploadTempFile = base_addr + 'qljfwapp3/sys/emapcomponent/file/uploadTempFile.do'
 # 提交url
-submit1 = base_addr + 'qljfwapp3/sys/emapcomponent/file/saveAttachment/162069986477777/1620699864777771.do'
-submit2 = base_addr + 'qljfwapp3/sys/emapcomponent/file/getUploadedAttachment/1620699864777771.do'
-submit3 = base_addr + 'qljfwapp3/sys/emapcomponent/file/saveAttachment/162069986478041/1620699864780411.do'
-submit4 = base_addr + 'qljfwapp3/sys/emapcomponent/file/getUploadedAttachment/1620699864780411.do'
-submit5 = base_addr + 'qljfwapp3/sys/emapcomponent/file/saveAttachment/162069986483022/1620699864830221.do'
-submit6 = base_addr + 'qljfwapp3/sys/emapcomponent/file/getUploadedAttachment/1620699864830221.do'
+submit1 = base_addr + 'qljfwapp3/sys/emapcomponent/file/saveAttachment/'+str(scope)+'/'+str(filetoken)+'.do'
+submit2 = base_addr + 'qljfwapp3/sys/emapcomponent/file/getUploadedAttachment/'+str(filetoken)+'.do'
 queryNextDayInschoolCount = base_addr + 'qljfwapp3/sys/lwWiseduElectronicPass/modules/application/queryNextDayInschoolCount.do'
 validateApply = base_addr + 'qljfwapp3/sys/lwWiseduElectronicPass/api/validateApply.do'
 # startFlow
@@ -143,30 +143,25 @@ s.post(hqsqjzsj)
 s.get(queryFirstUserTaskToolbar)
 print('申请')
 
-#填写过程模拟发包
+# 填写过程模拟发包
 s.post(COMMON_STATE)
 s.post(pass_campus)
 s.post(SQLY)
-s.post(uploadTempFile,{'scope': '162069986477777','fileToken': '1620699864777771','size': '0','type': 'jpg,jpeg,png','storeId': 'image','isSingle': '0','fileName': '','files[]': '/usr/bin/行程卡.PNG'})
-print('内容填写')
-
-#提交模拟发包
-s.post(submit1,{'attachmentParam': '{"storeId":"image","scope":"162069986477777","fileToken":"1620699864777771"}'})
-s.post(submit2)
-s.post(submit3,{'attachmentParam': '{"storeId":"image","scope":"162069986478041","fileToken":"1620699864780411"}'})
-s.post(submit4)
-s.post(submit5,{'attachmentParam': '{"storeId":"image","scope":"162069986483022","fileToken":"1620699864830221"}'})
-s.post(submit6)
+s.post(uploadTempFile,{'scope': scope,'fileToken': filetoken,'size': '0','type': 'jpg,jpeg,png','storeId': 'image','isSingle': '0','fileName': '','files[]': '行程卡.PNG'})
+s.post(submit1,{'attachmentParam': str({"storeId":"image","scope":scope,"fileToken":filetoken})})
+submit_response = s.post(submit2)
+# print(submit_response.text)
 s.post(queryNextDayInschoolCount,{'DEPT_CODE':'243015','PERSON_TYPE':'YJS'})
 s.post(validateApply,{'userid': username,'campus': '1,2,3','beginTime': tomorrow})
 print('提交')
 
+# 注意获取当日期
 # data
 formData = {
     "WID":"",
     "USER_ID":username,
     "USER_NAME":USER_NAME,
-    "GENDER_CODE_DISPLAY":"男",####性别，如有需要自行更改
+    "GENDER_CODE_DISPLAY":"男",
     "GENDER_CODE":"1",
     "PHONE_NUMBER":PHONE_NUMBER,
     "DEPT_CODE":"243015",
@@ -190,7 +185,7 @@ formData = {
     "SFYZNJJJGL":"1",
     "SFJBZJHBXLXTJ_DISPLAY":"是",
     "SFJBZJHBXLXTJ":"1",
-    "YL6":"1620699864777771",
+    "YL6":filetoken,   #############################################filetoken
     "YL7":"",
     "CAMPUS_DISPLAY":"九龙湖校区,四牌楼校区,丁家桥校区",
     "CAMPUS":"1,2,3",
