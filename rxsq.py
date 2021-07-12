@@ -25,7 +25,7 @@ ID_NO = os.environ["ID_NO"]
 KU = os.environ["KU"]
 
 # 行程卡信息
-scope = '162043657002556'
+scope = '162605284949625'
 filetoken = scope+'1'
 
 # 登录url
