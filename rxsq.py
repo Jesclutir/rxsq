@@ -267,9 +267,9 @@ formData = {
     'DZ_SDXQ_DISPLAY': '九龙湖',
     'DZ_SDXQ': '002',
     'DZ_YMJZRQ1': '2021-04-09',
-    'DZ_YMJZD1': '九龙湖校区',
+    'DZ_YMJZD1': '九龙湖校区体育馆',
     'DZ_YMJZRQ2': '2021-05-28',
-    'DZ_YMJZD2': '九龙湖校区',
+    'DZ_YMJZD2': '九龙湖校区体育馆',
     'DZ_WJZYMYY_DISPLAY': '',
     'DZ_WJZYMYY': '',
     'DZ_WJZYMQTYY': '',
@@ -291,7 +291,7 @@ print(T_REPORT_EPIDEMIC_CHECKIN_SAVE_response.text)
 
 ###################################入校申请##################################
 # 苏康码信息
-scope = '162735131770473'
+scope = '162795418448261'
 filetoken = scope+'1'
 
 # 登录url
