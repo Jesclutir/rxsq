@@ -165,7 +165,7 @@ formData = {
     'MEMBER_HEALTH_UNSUAL_CODE': '',
     'MENTAL_STATE': '',
     'RYSFLB': 'QTRY',
-    'DZ_JSDTCJTW': '36',
+    'DZ_JSDTCJTW': '36.5',
     'DZ_DTWJTW': '',
     'DZ_DTWSJCTW': '',
     'DZ_SZWZLX_DISPLAY': '在校外(在南京)',
