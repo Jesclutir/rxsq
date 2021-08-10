@@ -291,7 +291,7 @@ print(T_REPORT_EPIDEMIC_CHECKIN_SAVE_response.text)
 
 ###################################入校申请##################################
 # 苏康码信息
-scope = '162795418448261'
+scope = '162856821217224'
 filetoken = scope+'1'
 
 # 登录url
@@ -414,7 +414,7 @@ formData = {
     "DZ_SFYJCS3":"否",
     "DZ_JRSTZK_DISPLAY":"是",
     "DZ_JRSTZK":"1",
-    "SFYZNJJJGL":"1、8月2日九龙湖体育馆结果阴性 2、7月29日九龙湖体育馆结果阴性 3、7月26日百家湖社区结果阴性",
+    "SFYZNJJJGL":"1、8月8日九龙湖体育馆结果阴性2、8月5日九龙湖体育馆结果阴性3、8月2日九龙湖体育馆结果阴性",
     "SFJBZJHBXLXTJ_DISPLAY":"是",
     "SFJBZJHBXLXTJ":"1",
     "YL6":filetoken,
