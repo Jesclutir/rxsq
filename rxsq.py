@@ -291,7 +291,7 @@ print(T_REPORT_EPIDEMIC_CHECKIN_SAVE_response.text)
 
 ###################################入校申请##################################
 # 苏康码信息
-scope = '162926271180823'
+scope = '163081005208572'
 filetoken = scope+'1'
 
 # 登录url
@@ -358,7 +358,7 @@ tomorrow_month = (date.today() + timedelta(days=1)).strftime("%m")
 tomorrow_day = (date.today() + timedelta(days=1)).strftime("%d")
 tomorrow = str(tomorrow_year)+"-"+str(tomorrow_month)+"-"+str(tomorrow_day)
 tomorrow_begin_time = str(tomorrow_year)+"-"+str(tomorrow_month)+"-"+str(tomorrow_day)+" 00:00:01"
-tomorrow_end_time = str(tomorrow_year)+"-"+str(tomorrow_month)+"-"+str(tomorrow_day)+" 23:59:59"
+tomorrow_end_time = str(tomorrow_year)+"-"+str(tomorrow_month)+"-"+str(tomorrow_day)+" 22:59:59"
 print('明天日期：',tomorrow)
 print('通行开始时间：',tomorrow_begin_time)
 print('通行结束时间：',tomorrow_end_time)
