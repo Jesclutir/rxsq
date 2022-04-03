@@ -291,7 +291,7 @@ print(T_REPORT_EPIDEMIC_CHECKIN_SAVE_response.text)
 
 ###################################入校申请##################################
 # 苏康码信息
-scope = '164480263823725'
+scope = '164896849002367'
 filetoken = scope+'1'
 
 # 登录url
